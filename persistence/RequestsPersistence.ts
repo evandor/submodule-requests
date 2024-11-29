@@ -6,7 +6,7 @@ interface RequestsPersistence {
 
   init(): Promise<any>
 
-  getRequest(tabId: string): Promise<string>
+  getRequest(tabId: string): Promise<RequestInfo>
 
   saveRequest(requestInfo: RequestInfo): Promise<any>
 

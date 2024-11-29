@@ -24,9 +24,14 @@ export function useRequestsService() {
     })
   }
 
+  const getWebRequestFor = (tabId: string): Promise<RequestInfo> => {
+    return db.getRequest(tabId)
+  }
+
   return {
     init,
-    logWebRequest
+    logWebRequest,
+    getWebRequestFor
   }
 
 }

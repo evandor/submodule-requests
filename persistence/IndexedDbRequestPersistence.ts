@@ -35,9 +35,8 @@ class IndexedDbRequestPersistence implements RequestsPersistence {
     return Promise.resolve(undefined);
   }
 
-  getRequest(url: string): Promise<string> {
-    const encodedUrl = btoa(url)
-    return this.db.get('requests', encodedUrl)
+  getRequest(tabId: string): Promise<RequestInfo> {
+    return this.db.get('requests', tabId)
   }
 
 
