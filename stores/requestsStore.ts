@@ -1,11 +1,5 @@
 import {defineStore} from 'pinia';
-import {computed, ref, watchEffect} from "vue";
-
-import * as cheerio from 'cheerio';
-import {CheerioAPI} from 'cheerio';
-import {TabReference, TabReferenceType} from "src/content/models/TabReference";
-import {uid} from "quasar";
-import {Readability} from '@mozilla/readability'
+import {computed, ref} from "vue";
 
 /**
  * this request store is meant to track transient state of the currently opened tab's request.
