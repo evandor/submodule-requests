@@ -1,10 +1,9 @@
-import {IDBPDatabase, openDB} from "idb";
-import RequestsPersistence from "src/requests/persistence/RequestsPersistence";
-import {RequestInfo} from "src/requests/models/RequestInfo"
+import { IDBPDatabase, openDB } from 'idb'
+import RequestsPersistence from 'src/requests/persistence/RequestsPersistence'
+import { RequestInfo } from 'src/requests/models/RequestInfo'
 
 class IndexedDbRequestPersistence implements RequestsPersistence {
-
-  private STORE_IDENT = 'requests';
+  private STORE_IDENT = 'requests'
 
   private db: IDBPDatabase = null as unknown as IDBPDatabase
 
@@ -14,31 +13,30 @@ class IndexedDbRequestPersistence implements RequestsPersistence {
 
   async init() {
     this.db = await this.initDatabase()
-    console.debug(` ...initialized requests: ${this.getServiceName()}`,'✅')
+    console.debug(` ...initialized requests: ${this.getServiceName()}`, '✅')
     return Promise.resolve()
   }
 
   private async initDatabase(): Promise<IDBPDatabase> {
     const ctx = this
-    return await openDB("requestsDB", 1, {
+    return await openDB('requestsDB', 1, {
       upgrade(db) {
         if (!db.objectStoreNames.contains(ctx.STORE_IDENT)) {
-          console.log("creating db " + ctx.STORE_IDENT)
-          db.createObjectStore(ctx.STORE_IDENT);
+          console.log('creating db ' + ctx.STORE_IDENT)
+          db.createObjectStore(ctx.STORE_IDENT)
           //store.createIndex("expires", "expires", {unique: false});
         }
-      }
-    });
+      },
+    })
   }
 
   compactDb(): Promise<any> {
-    return Promise.resolve(undefined);
+    return Promise.resolve(undefined)
   }
 
   getRequest(tabId: string): Promise<RequestInfo> {
     return this.db.get('requests', tabId)
   }
-
 
   async saveRequest(requestInfo: RequestInfo): Promise<any> {
     return await this.db.put(this.STORE_IDENT, requestInfo, requestInfo.id)
@@ -77,7 +75,6 @@ class IndexedDbRequestPersistence implements RequestsPersistence {
     //   })
     //   .catch(err => console.log("err", err))
   }
-
 }
 
 export default new IndexedDbRequestPersistence()

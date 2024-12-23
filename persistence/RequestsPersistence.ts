@@ -1,7 +1,6 @@
-import {RequestInfo} from "src/requests/models/RequestInfo"
+import { RequestInfo } from 'src/requests/models/RequestInfo'
 
 interface RequestsPersistence {
-
   getServiceName(): string
 
   init(): Promise<any>
@@ -11,7 +10,6 @@ interface RequestsPersistence {
   saveRequest(requestInfo: RequestInfo): Promise<any>
 
   compactDb(): Promise<any>
-
 }
 
-export default RequestsPersistence;
+export default RequestsPersistence
