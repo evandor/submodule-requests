@@ -1,6 +1,6 @@
 import { IDBPDatabase, openDB } from 'idb'
-import RequestsPersistence from 'src/requests/persistence/RequestsPersistence'
 import { RequestInfo } from 'src/requests/models/RequestInfo'
+import RequestsPersistence from 'src/requests/persistence/RequestsPersistence'
 
 class IndexedDbRequestPersistence implements RequestsPersistence {
   private STORE_IDENT = 'requests'
