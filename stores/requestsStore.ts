@@ -12,11 +12,9 @@ export const useRequestsStore = defineStore('requests', () => {
     currentTabRequest.value = details
   }
 
-  const getCurrentTabRequest = computed(
-    (): chrome.webRequest.WebResponseHeadersDetails | undefined => {
-      return currentTabRequest.value
-    },
-  )
+  const getCurrentTabRequest = computed((): chrome.webRequest.WebResponseHeadersDetails | undefined => {
+    return currentTabRequest.value
+  })
 
   return {
     setCurrentTabRequest,

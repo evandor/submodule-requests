@@ -17,9 +17,7 @@ export function useRequestsService() {
   const logWebRequest = (details: chrome.webRequest.WebResponseHeadersDetails) => {
     const tabsForUrl = useTabsetsStore().tabsForUrl(details.url)
     _.forEach(tabsForUrl, (tabAndTabsetId: TabAndTabsetId) => {
-      db.saveRequest(
-        new RequestInfo(tabAndTabsetId.tab.id, details.statusCode, details.responseHeaders || []),
-      )
+      db.saveRequest(new RequestInfo(tabAndTabsetId.tab.id, details.statusCode, details.responseHeaders || []))
         .then(() => console.debug('added request'))
         .catch((err) => console.warn('error in logWebRequest', err))
     })
