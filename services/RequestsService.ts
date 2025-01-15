@@ -11,7 +11,7 @@ export function useRequestsService() {
     db = storage
     await db.init()
     // initListeners()
-    console.debug(` ...initialized requests: Service`, '✅')
+    // console.debug(` ...initialized requests: Service`, '✅')
   }
 
   const logWebRequest = (details: chrome.webRequest.WebResponseHeadersDetails) => {

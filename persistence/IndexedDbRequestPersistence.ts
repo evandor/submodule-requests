@@ -13,7 +13,7 @@ class IndexedDbRequestPersistence implements RequestsPersistence {
 
   async init() {
     this.db = await this.initDatabase()
-    console.debug(` ...initialized requests: ${this.getServiceName()}`, '✅')
+    // console.debug(` ...initialized requests: ${this.getServiceName()}`, '✅')
     return Promise.resolve()
   }
 
